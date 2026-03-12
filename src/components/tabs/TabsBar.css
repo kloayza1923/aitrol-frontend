@@ -1,0 +1,165 @@
+.tabs-bar-wrapper {
+  width: 100%;
+  display: flex;
+  align-items: stretch;
+  background-color: var(--bs-gray-100, #f5f5f5);
+  border-bottom: 1px solid var(--bs-border-color, #ddd);
+  min-height: 48px;
+  position: relative;
+  z-index: 100;
+  flex-shrink: 0;
+}
+
+/* Estilos para tabs en línea (dentro del navbar) */
+.tabs-bar-wrapper.tabs-inline {
+  background-color: transparent;
+  border-bottom: none;
+  min-height: 36px;
+  padding: 0;
+  align-items: center;
+  border-left: 1px solid var(--bs-border-color, #ddd);
+  border-right: 1px solid var(--bs-border-color, #ddd);
+  margin: 0 8px;
+}
+
+.tabs-container {
+  flex: 1;
+  width: 100% !important;
+  display: flex;
+  align-items: center;
+}
+
+.tabs-container .MuiTabs-flexContainer {
+  align-items: center;
+  height: 100%;
+}
+
+.tabs-container .MuiTab-root {
+  min-height: 48px;
+  padding: 8px 12px;
+  text-transform: none;
+  font-size: 0.875rem;
+}
+
+.tabs-container .MuiTab-textColorPrimary {
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.tabs-container .MuiTab-textColorPrimary.Mui-selected {
+  color: #1976d2;
+  font-weight: 500;
+}
+
+.tab-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  user-select: none;
+  padding: 4px 0;
+}
+
+.tab-label .tab-title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 150px;
+  flex: 1;
+}
+
+/* Para tabs inline */
+.tabs-inline .tab-label {
+  gap: 0.25rem;
+  padding: 2px 0;
+}
+
+.tabs-inline .tab-label .tab-title {
+  max-width: 120px;
+  font-size: 0.75rem;
+}
+
+.tab-close-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  border-radius: 2px;
+  transition: background-color 0.2s ease;
+  flex-shrink: 0;
+  padding: 2px;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.tab-close-icon:hover {
+  background-color: rgba(0, 0, 0, 0.08);
+  color: rgba(0, 0, 0, 0.87);
+}
+
+.tab-close-icon svg {
+  width: 1rem;
+  height: 1rem;
+  display: flex;
+}
+
+/* Para tabs inline - close icon más pequeño */
+.tabs-inline .tab-close-icon {
+  width: 20px;
+  height: 20px;
+  padding: 1px;
+}
+
+.tabs-inline .tab-close-icon svg {
+  width: 0.75rem;
+  height: 0.75rem;
+}
+
+/* Context menu styles */
+.tab-context-menu {
+  min-width: 200px;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.tab-context-menu .MuiMenuItem-root {
+  padding: 8px 16px;
+  font-size: 0.875rem;
+}
+
+.tab-context-menu .MuiMenuItem-root:hover {
+  background-color: var(--bs-gray-100, #f5f5f5);
+}
+
+/* Estilos adicionales para containers inline */
+.tabs-inline .MuiTabs-flexContainer {
+  gap: 0;
+}
+
+.tabs-inline .MuiTab-root {
+  border-right: 1px solid var(--bs-border-color, #ddd);
+}
+
+.tabs-inline .MuiTab-root:last-child {
+  border-right: none;
+}
+
+/* Botón de refresh */
+.tab-refresh-btn {
+  color: rgba(0, 0, 0, 0.6);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.tab-refresh-btn:hover {
+  color: rgba(0, 0, 0, 0.87);
+  background-color: rgba(0, 0, 0, 0.04);
+}
+
+.tab-refresh-btn svg {
+  transition: transform 0.6s ease;
+}
+
+.tab-refresh-btn:active svg {
+  transform: rotate(180deg);
+}

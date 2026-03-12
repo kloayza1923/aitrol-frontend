@@ -1,0 +1,124 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-accent: #4be3b6;
+    --color-accent-base: #4be3b6;
+  }
+
+  .dark {
+    --color-ink: #070707;
+    --color-ink-2: #0d0e10;
+    --color-panel: #111214;
+    --color-panel-2: #17181b;
+    --color-ink-contrast: #f4f5f7;
+    --color-muted: #9aa0a6;
+    --color-accent-2: #9fb8ff;
+    --color-danger: #ff6b6b;
+    --color-badge-cie: #a9d7ff;
+    --color-badge-med: #ffd1a6;
+    --color-badge-lab: #b7f6e7;
+    --color-badge-rx: #d9ccff;
+    --color-border: rgba(255, 255, 255, 0.1);
+    --shadow-panel: 0 18px 36px rgba(0, 0, 0, 0.35);
+    --shadow-panel-lg: 0 24px 48px rgba(0, 0, 0, 0.4);
+  }
+
+  .light {
+    --color-ink: #ffffff;
+    --color-ink-2: #f8fafc;
+    --color-panel: #ffffff;
+    --color-panel-2: #f1f5f9;
+    --color-ink-contrast: #0f172a;
+    --color-muted: #64748b;
+    --color-accent-2: #6366f1;
+    --color-danger: #ef4444;
+    --color-badge-cie: #3b82f6;
+    --color-badge-med: #f97316;
+    --color-badge-lab: #10b981;
+    --color-badge-rx: #8b5cf6;
+    --color-border: rgba(0, 0, 0, 0.1);
+    --shadow-panel: 0 4px 12px rgba(0, 0, 0, 0.08);
+    --shadow-panel-lg: 0 8px 24px rgba(0, 0, 0, 0.12);
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  html,
+  body {
+    min-height: 100%;
+  }
+
+  html.dark body {
+    font-family: var(--font-body), system-ui, -apple-system, sans-serif;
+    letter-spacing: 0.01em;
+    color: var(--color-ink-contrast);
+    background: radial-gradient(1200px 700px at 10% 0%, #111217, transparent),
+      radial-gradient(900px 600px at 90% 20%, #0f1a1a, transparent),
+      linear-gradient(160deg, #070707 0%, #050505 100%);
+  }
+
+  html.light body {
+    font-family: var(--font-body), system-ui, -apple-system, sans-serif;
+    letter-spacing: 0.01em;
+    color: var(--color-ink-contrast);
+    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 50%, #f1f5f9 100%);
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display), serif;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  button,
+  input,
+  select,
+  textarea {
+    font-family: inherit;
+  }
+}
+
+@layer components {
+  .clinical-badge {
+    @apply inline-flex items-center rounded-full px-2 py-0.5 text-[12px] font-semibold;
+    margin: 0 2px;
+  }
+
+  .dark .clinical-badge {
+    @apply text-[#1b1b1b];
+  }
+
+  .light .clinical-badge {
+    @apply text-white;
+  }
+
+  .clinical-badge--cie {
+    @apply bg-badge-cie;
+  }
+
+  .clinical-badge--med {
+    @apply bg-badge-med;
+  }
+
+  .clinical-badge--lab {
+    @apply bg-badge-lab;
+  }
+
+  .clinical-badge--rx {
+    @apply bg-badge-rx;
+  }
+
+  .ProseMirror {
+    @apply min-h-[320px] outline-none leading-7 text-sm text-ink-contrast;
+  }
+}

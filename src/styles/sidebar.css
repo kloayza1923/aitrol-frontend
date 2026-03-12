@@ -1,0 +1,203 @@
+/* Estilos personalizados para el sidebar con temas */
+
+.sidebar {
+  background-attachment: fixed;
+  position: relative;
+}
+
+.sidebar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0.1;
+  background-image: 
+    radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%),
+    radial-gradient(circle at 50% 50%, rgba(119, 198, 255, 0.2) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.sidebar-content {
+  position: relative;
+  z-index: 1;
+}
+
+/* Menu item hover effects */
+.menu-item-root {
+  position: relative;
+  overflow: hidden;
+}
+
+.menu-item-root::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+  transition: left 0.5s ease;
+  z-index: 0;
+}
+
+.menu-item-root:hover::before {
+  left: 100%;
+}
+
+/* Active menu item glow effect */
+.menu-item-active {
+  position: relative;
+}
+
+.menu-item-active::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 3px;
+  height: 60%;
+  background: linear-gradient(to bottom, var(--primary-color, #1976d2), var(--secondary-color, #dc004e));
+  transform: translateY(-50%);
+  border-radius: 0 2px 2px 0;
+  box-shadow: 0 0 8px var(--primary-color, #1976d2);
+}
+
+/* Scrollbar personalizado */
+.sidebar-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.sidebar-content::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.sidebar-content::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+  transition: background 0.3s ease;
+}
+
+.dark .sidebar-content::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.sidebar-content::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.dark .sidebar-content::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.4);
+}
+
+/* User section animations */
+.user-section {
+  position: relative;
+  overflow: hidden;
+}
+
+.user-section::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: conic-gradient(
+    from 0deg,
+    transparent,
+    rgba(var(--primary-rgb, 25, 118, 210), 0.1),
+    transparent,
+    rgba(var(--secondary-rgb, 220, 0, 78), 0.1),
+    transparent
+  );
+  animation: rotate 20s linear infinite;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.user-section:hover::before {
+  opacity: 1;
+}
+
+@keyframes rotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Pulse animation for online indicator */
+.online-indicator {
+  animation: pulse-online 2s ease-in-out infinite;
+}
+
+@keyframes pulse-online {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.8;
+  }
+}
+
+/* Menu icon hover animations */
+.menu-icon {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.menu-link:hover .menu-icon {
+  transform: scale(1.1) rotate(5deg);
+}
+
+.menu-item-active .menu-icon {
+  transform: scale(1.05);
+  filter: drop-shadow(0 0 8px rgba(var(--primary-rgb, 25, 118, 210), 0.5));
+}
+
+/* Configuration dialog glass effect */
+.config-dialog {
+  backdrop-filter: blur(20px);
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.dark .config-dialog {
+  background: rgba(18, 18, 18, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Responsive improvements */
+@media (max-width: 1024px) {
+  .sidebar::before {
+    opacity: 0.05;
+  }
+  
+  .user-section::before {
+    display: none;
+  }
+}
+
+/* Theme-specific enhancements */
+.sidebar-ocean {
+  --primary-rgb: 2, 119, 189;
+  --secondary-rgb: 0, 172, 193;
+}
+
+.sidebar-forest {
+  --primary-rgb: 46, 125, 50;
+  --secondary-rgb: 85, 139, 47;
+}
+
+.sidebar-sunset {
+  --primary-rgb: 245, 124, 0;
+  --secondary-rgb: 233, 30, 99;
+}
+
+.sidebar-royal {
+  --primary-rgb: 103, 58, 183;
+  --secondary-rgb: 63, 81, 181;
+}

@@ -1,0 +1,59 @@
+/* Demo10 Sidebar Styles */
+
+.demo10 .sidebar {
+  width: var(--tw-sidebar-width, 270px);
+}
+
+/* User section responsive behavior */
+.demo10 .user-section {
+  transition: all 0.3s ease;
+}
+
+.demo10 .user-info,
+.demo10 .user-actions {
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Hide user info and actions on smaller screens */
+@media (max-width: 1024px) {
+  .demo10 .user-info,
+  .demo10 .user-actions {
+    display: none;
+  }
+  
+  .demo10 .user-section > div > div {
+    justify-content: center;
+  }
+}
+
+/* Alternative: hide when sidebar width is less than certain size */
+.demo10[style*="--tw-sidebar-width:200px"] .user-info,
+.demo10[style*="--tw-sidebar-width:200px"] .user-actions,
+.demo10[style*="--tw-sidebar-width:180px"] .user-info,
+.demo10[style*="--tw-sidebar-width:180px"] .user-actions,
+.demo10[style*="--tw-sidebar-width:160px"] .user-info,
+.demo10[style*="--tw-sidebar-width:160px"] .user-actions {
+  display: none !important;
+}
+
+.demo10[style*="--tw-sidebar-width:200px"] .user-section > div > div,
+.demo10[style*="--tw-sidebar-width:180px"] .user-section > div > div,
+.demo10[style*="--tw-sidebar-width:160px"] .user-section > div > div {
+  justify-content: center !important;
+}
+
+/* Custom breakpoint for narrow sidebars */
+@media (max-width: 768px) {
+  .demo10 .user-info,
+  .demo10 .user-actions {
+    display: none !important;
+  }
+  
+  .demo10 .user-section .flex {
+    justify-content: center !important;
+  }
+  
+  .demo10 .user-section {
+    text-align: center;
+  }
+}

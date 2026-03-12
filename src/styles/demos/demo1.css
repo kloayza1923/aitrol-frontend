@@ -1,0 +1,136 @@
+/* Variables */
+.demo1 {
+	--tw-sidebar-transition-duration: 0.3s;
+	--tw-sidebar-transition-timing: ease;
+	--tw-sidebar-width: 270px; /* Sidebar expandido por defecto */
+	--tw-sidebar-default-width: 270px;
+	--tw-tabs-height: 0px; /* Altura de las pestañas (0 si no hay, 48px si hay) */
+}
+
+@media (max-width: theme('screens.lg')) {
+	.demo1 {
+		--tw-sidebar-width: theme('custom.layouts.demo1.sidebar.width.mobile');
+	}
+}
+
+/* Base */
+.demo1 .sidebar {
+	width: var(--tw-sidebar-width);
+	height: 100vh;
+}
+
+.demo1 .sidebar-content {
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+}
+
+.demo1 .wrapper {
+	/* Use a CSS variable for header height so the wrapper can offset correctly */
+	/* Add tabs height on top of header height */
+	padding-top: calc(var(--tw-header-height, 70px) + var(--tw-tabs-height, 0px));
+	min-height: 100vh;
+	height: 100vh; /* ensure full viewport height so children can use flex sizing */
+	display: flex;
+	flex-direction: column;
+}
+
+.demo1 .wrapper .content {
+	flex: 1;
+	min-height: 0; /* allow flex child to shrink and enable internal scrolling */
+	overflow: auto;
+}
+
+/* Ensure header has a known height so the wrapper padding matches it */
+.demo1 .header {
+	/* Header expands with tabs when they are present */
+	height: auto;
+	min-height: var(--tw-header-height, 70px);
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+}
+
+/* Desktop mode */
+@media (min-width: theme('screens.lg')) {
+	.demo1 .sidebar {
+		width: var(--tw-sidebar-width);
+		position: fixed; /* keep sidebar fixed on desktop */
+		top: 0;
+		left: 0;
+		z-index: 40;
+	}
+
+	.demo1 .sidebar .sidebar-wrapper {
+		width: var(--tw-sidebar-default-width);
+	}
+
+	.demo1 .sidebar .sidebar-logo {
+		width: var(--tw-sidebar-default-width);
+	}
+
+	.demo1.sidebar-fixed .wrapper {
+		padding-inline-start: var(--tw-sidebar-width);
+	}
+
+	/* Also ensure wrapper has left padding by default on desktop so content resizes even without sidebar-fixed class */
+	.demo1 .wrapper {
+		padding-inline-start: var(--tw-sidebar-width);
+	}
+}
+
+.demo1.no-sidebar .wrapper {
+  padding-inline-start: 0 !important;
+}
+
+.demo1.no-sidebar .header {
+  inset-inline-start: 0 !important;
+}
+
+/* Animaciones personalizadas */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse-subtle {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.3s ease-out;
+}
+
+.animate-pulse-subtle {
+  animation: pulse-subtle 2s ease-in-out infinite;
+}
+
+/* Mobile: sidebar overlays content and wrapper padding should be zero */
+@media (max-width: theme('screens.lg')) {
+	.demo1 .sidebar {
+		position: absolute;
+		left: 0;
+		top: 0;
+		z-index: 50;
+	}
+	.demo1 .wrapper {
+		padding-inline-start: 0;
+		padding-top: var(--tw-header-height-mobile, 70px);
+	}
+	.demo1 .header {
+		/* On mobile the header must start at the left edge */
+		inset-inline-start: 0;
+		height: var(--tw-header-height-mobile, 70px);
+	}
+}
