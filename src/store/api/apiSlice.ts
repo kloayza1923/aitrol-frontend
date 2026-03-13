@@ -2,7 +2,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import type { RootState } from '../index';
 
 const baseQuery = fetchBaseQuery({
-  baseUrl: import.meta.env.VITE_APP_API_URL || 'http://localhost:3000',
+  baseUrl: import.meta.env.VITE_APP_API_URL || 'http://localhost:8082',
   prepareHeaders: (headers, { getState, endpoint }) => {
     const state = getState() as RootState;
     const session = JSON.parse(localStorage.getItem('auth') || '{}');
